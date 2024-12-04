@@ -10,5 +10,9 @@ export const useQueryClient = () => {
     await queryClient.refetchQueries({ queryKey: key })
   }
 
-  return { refetch }
+  const invalidateQueries = (key: QueryKey) => {
+    queryClient.invalidateQueries({ queryKey: key })
+  }
+
+  return { refetch, invalidateQueries }
 }

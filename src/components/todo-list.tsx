@@ -1,7 +1,10 @@
 'use client'
 
+import { deleteTodo } from '@/actions/delete-todo'
 import { getTodos } from '@/actions/get-todos'
+import { updateTodo } from '@/actions/update-todo'
 import { Todo } from '@/database/schema/todos'
+import { useQueryClient } from '@/hooks/use-query-client'
 import { cn } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
 import { Square, SquareCheck, Trash } from 'lucide-react'
@@ -14,7 +17,7 @@ export const TodoList = () => {
   })
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col divide-y divide-dashed">
       {data?.map((item) => (
         <TodoItem key={item.id} data={item} />
       ))}
@@ -29,23 +32,26 @@ interface Props {
 export const TodoItem = ({ data }: Props) => {
   const { id, title, completed } = data
   const [isPending, startTransition] = useTransition()
+  const { refetch } = useQueryClient()
 
   const handleComplete = () => {
     startTransition(async () => {
-      // await updateTodo(id, { completed: !completed })
+      await updateTodo(id, { completed: !completed })
+      refetch(['todos'])
     })
   }
 
   const handleDelete = () => {
     startTransition(async () => {
-      // await deleteTodo(id)
+      await deleteTodo(id)
+      refetch(['todos'])
     })
   }
 
   return (
     <div
       className={cn(
-        'flex items-center gap-4',
+        'flex items-center gap-4 py-2',
         isPending && 'opacity-25 pointer-events-none'
       )}
     >
