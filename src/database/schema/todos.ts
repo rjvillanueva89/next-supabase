@@ -8,9 +8,9 @@ export const todos = pgTable('todos', {
   title: text('title').notNull(),
   completed: boolean('completed').default(false).notNull(),
   createdAt: timestamp('created_at', { mode: 'string' }).defaultNow().notNull(),
-  updatedAt: timestamp('updated_at', { mode: 'string' }).$onUpdate(
-    () => sql`now()`
-  ),
+  updatedAt: timestamp('updated_at', { mode: 'string' })
+    .default(sql`null`)
+    .$onUpdate(() => sql`now()`),
 })
 
 export type Todo = InferSelectModel<typeof todos>

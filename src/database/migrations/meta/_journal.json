@@ -8,6 +8,13 @@
       "when": 1733135796143,
       "tag": "0000_chief_gargoyle",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1733325536207,
+      "tag": "0001_military_sally_floyd",
+      "breakpoints": true
     }
   ]
 }
