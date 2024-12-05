@@ -1,3 +1,4 @@
+import { SignOutButton } from '@/components/auth/sign-out-button'
 import { TodoForm } from '@/components/todos/todo-form'
 import { TodoList } from '@/components/todos/todo-list'
 import { supabase } from '@/lib/supabase/server'
@@ -12,6 +13,7 @@ export default async function HomePage() {
         <h1 className="text-2xl">My Todos</h1>
         <TodoForm />
         <TodoList />
+        <SignOutButton />
       </main>
     </div>
   )
