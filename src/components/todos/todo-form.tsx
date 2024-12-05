@@ -3,8 +3,8 @@
 import { createTodo } from '@/actions/create-todo'
 import { useQueryClient } from '@/hooks/use-query-client'
 import { useState } from 'react'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
 
 export const TodoForm = () => {
   const [todo, setTodo] = useState('')
