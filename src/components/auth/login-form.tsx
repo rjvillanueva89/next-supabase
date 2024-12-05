@@ -2,7 +2,6 @@
 
 import { supabase } from '@/lib/supabase/client'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { Button } from '../ui/button'
@@ -18,8 +17,7 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>
 
-export const SignUpForm = () => {
-  const [isSuccessful, setIsSuccessful] = useState(false)
+export const LoginForm = () => {
   const form = useForm<FormData>({
     resolver: zodResolver(FormSchema),
   })
@@ -27,26 +25,16 @@ export const SignUpForm = () => {
     control,
     register,
     handleSubmit,
-    formState: { isSubmitting, isSubmitted },
+    formState: { isSubmitting },
   } = form
-
   const onSubmit = handleSubmit(async ({ email, password }) => {
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     })
 
-    if (error) {
-      console.log(error)
-      return
-    }
-
-    setIsSuccessful(true)
+    console.log(data, error)
   })
-
-  if (isSuccessful) {
-    return <div>Sign up successful</div>
-  }
 
   return (
     <Form form={form} onSubmit={onSubmit} className="flex flex-col gap-4">
@@ -78,8 +66,8 @@ export const SignUpForm = () => {
           </FormItem>
         )}
       />
-      <Button type="submit" disabled={isSubmitting || isSubmitted}>
-        Submit
+      <Button type="submit" disabled={isSubmitting}>
+        Login
       </Button>
     </Form>
   )
