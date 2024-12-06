@@ -1,6 +1,6 @@
 'use client'
 
-import { supabase } from '@/lib/supabase/client'
+import { signIn } from '@/actions/sign-in'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -28,12 +28,7 @@ export const LoginForm = () => {
     formState: { isSubmitting },
   } = form
   const onSubmit = handleSubmit(async ({ email, password }) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-
-    console.log(data, error)
+    await signIn(email, password)
   })
 
   return (

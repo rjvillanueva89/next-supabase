@@ -1,3 +1,5 @@
+'use server'
+
 import { supabase } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
@@ -7,11 +9,8 @@ export const signIn = async (email: string, password: string) => {
     password,
   })
 
-  console.log(data, error)
-
-  if (error) {
-    return
-  }
+  console.log(data)
+  console.log(error)
 
   redirect('/protected')
 }

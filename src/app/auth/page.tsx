@@ -11,7 +11,7 @@ const AuthPage = () => {
         supabaseClient={supabase}
         appearance={{ theme: ThemeSupa }}
         providers={['google']}
-        redirectTo="http://localhost:3000/auth/callback"
+        redirectTo="/auth/callback"
       />
     </div>
   )

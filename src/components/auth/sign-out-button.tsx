@@ -1,15 +1,8 @@
 'use client'
 
-import { useUser } from '@/hooks/use-user'
-import { supabase } from '@/lib/supabase/client'
+import { signOut } from '@/actions/sign-out'
 
 export const SignOutButton = () => {
-  const { user } = useUser()
-  const handleClick = async () => await supabase.auth.signOut()
-
-  console.log(user)
-
-  if (!user) return null
-
+  const handleClick = async () => await signOut()
   return <button onClick={handleClick}>Sign Out</button>
 }
