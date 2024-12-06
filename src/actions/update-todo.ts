@@ -1,7 +1,7 @@
 'use server'
 
 import { db } from '@/database/db'
-import { Todo, todos } from '@/database/schema/todos'
+import { type Todo, todos } from '@/database/schema/todos'
 import { eq } from 'drizzle-orm'
 
 export const updateTodo = async (id: string, data: Partial<Todo>) => {

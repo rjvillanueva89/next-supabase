@@ -1,4 +1,4 @@
-import { InferInsertModel, InferSelectModel, sql } from 'drizzle-orm'
+import { type InferInsertModel, type InferSelectModel, sql } from 'drizzle-orm'
 import { boolean, pgTable, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 
 export const todos = pgTable('todos', {

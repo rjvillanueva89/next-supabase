@@ -3,7 +3,7 @@
 import { deleteTodo } from '@/actions/delete-todo'
 import { getTodos } from '@/actions/get-todos'
 import { updateTodo } from '@/actions/update-todo'
-import { Todo } from '@/database/schema/todos'
+import { type Todo } from '@/database/schema/todos'
 import { useQueryClient } from '@/hooks/use-query-client'
 import { cn } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'

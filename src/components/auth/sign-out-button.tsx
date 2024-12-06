@@ -1,6 +1,6 @@
 'use client'
 
-import { signOut } from '@/actions/sign-out'
+import { signOut } from '@/actions/auth'
 
 export const SignOutButton = () => {
   const handleClick = async () => await signOut()

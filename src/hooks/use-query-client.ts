@@ -1,5 +1,5 @@
 import {
-  QueryKey,
+  type QueryKey,
   useQueryClient as useTanstackQueryClient,
 } from '@tanstack/react-query'
 
